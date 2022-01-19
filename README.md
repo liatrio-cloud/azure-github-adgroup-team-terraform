@@ -59,13 +59,4 @@ This will:
   * Backend configuration: Update the backend config to match your `tfstate` storage needs.
 
 ### Terraform Usage
-#### `init`, `plan`, and `apply`
-```shell
-terraform init
-```
-```shell
-terraform plan 
-```
-```shell
-terraform apply
-```
+Nothing strange here yet - `terraform init`, `terraform plan`, and `terraform apply` your infrastructure.
