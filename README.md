@@ -1,4 +1,5 @@
 # GitHub Enterprise Team Management via Terraform
+
 ##### IaC configuration for GitHub teams, IdP (AAD) integration, and branch protections
 More generally, this repo is for managing teams and repos for a GitHub Organization configuration.
 
