@@ -19,10 +19,18 @@ jobs:
       - name: Git checkout
         uses: actions/checkout@v2
 
+      - name: Prepare secrets
+        shell: bash
+        working-directory: tf
+        run: |
+          echo $TF_BACKEND | base64 -d > backend.tfvars
+        env:
+          TF_BACKEND: ${{ secrets.TF_BACKEND }}
+
       - name: Terragrunt apply
         run: |
           set -o pipefail
-          terraform init
+          terraform init -backend-config=backend.tfvars
           terraform apply -auto-approve
         id: apply
         working-directory: tf

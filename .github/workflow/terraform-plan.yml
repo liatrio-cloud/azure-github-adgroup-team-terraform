@@ -44,10 +44,22 @@ jobs:
       - name: Git checkout
         uses: actions/checkout@v2
 
+      - name: Terraform fmt check
+        run: terraform fmt -check -recursive -diff
+
+      - name: Prepare secrets
+        shell: bash
+        working-directory: tf
+        run: |
+          echo $TF_BACKEND | base64 -d > backend.tfvars
+        env:
+          TF_BACKEND: ${{ secrets.TF_BACKEND }}
+
       - name: Terragrunt plan
         run: |
           set -o pipefail
-          terraform init
+          terraform init -backend-config=backend.tfvars
+          terraform validate
           terraform plan -out tfplan.plan
           terraform show -no-color -json tfplan.plan > tfplan.json
         id: plan
