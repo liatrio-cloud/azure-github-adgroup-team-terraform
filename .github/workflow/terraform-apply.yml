@@ -1,0 +1,34 @@
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**/*.md'
+  workflow_dispatch:
+
+name: Apply
+concurrency: tfstate
+
+jobs:
+  apply:
+    name: Terraform Apply
+    runs-on:
+      - self-hosted
+      - terraform-1.0
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+
+      - name: Terragrunt apply
+        run: |
+          set -o pipefail
+          terraform init
+          terraform apply -auto-approve
+        id: apply
+        working-directory: tf
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_FOR_PROVIDER }}
+          ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+          ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
