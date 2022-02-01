@@ -1,4 +1,4 @@
-module "team-a" {
+module "platform" {
   source = "../module-team-config"
   providers = {
     github  = github
