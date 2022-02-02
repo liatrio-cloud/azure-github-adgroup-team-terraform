@@ -1,29 +1,19 @@
-// # This will onboard & config the github-team-a team.
-// module "team-a" {
-//   source = "../module-team-config"
-//   providers = {
-//     github  = github
-//     azuread = azuread
-//   }
-//   org        = var.org
-//   permission = var.default_access
-//   # Values above this line should be the same for each team
-//   team_name        = "github-team-name-a"
-//   team_description = "GitHub Team A"
-//   # Example of a 
-//   team_repos       = ["repo-to-manage","additional-repo-to-manage"]
-// }
+module "platform" {
+  source = "../module-team-config"
+  providers = {
+    github  = github
+    azuread = azuread
+  }
+  org        = var.org
+  permission = var.default_access
+  # Values above this line should be the same for each team
+  team_name        = "platform"
+  team_description = "The platform team"
+  team_repos = [
+    "azure-github-adgroup-team-terraform",
+    "aks-runners",
+    "github-workflows",
+    "runner-images"
+  ]
+}
 
-// # This will onboard & config the github-team-b team.
-// module "team-b" {
-//   source = "../module-team-config"
-//   providers = {
-//     github  = github
-//     azuread = azuread
-//   }
-//   org        = var.org
-//   permission = var.default_access
-//   # Values above this line should be the same for each team
-//   team_name        = "github-team-b"
-//   team_description = "GitHub Team B"
-// }

@@ -1,7 +1,7 @@
 variable "org" {
   type        = string
   description = "GitHub org to manage teams in"
-  default     = "OneGHEOrg"
+  default     = "liatrio-enterprise"
 }
 
 variable "default_access" {
