@@ -7,7 +7,7 @@
 
 locals {
   team_repo_list = concat(
-#    data.github_repositories.team_repos.names,
+    #    data.github_repositories.team_repos.names,
     var.team_repos
   )
 }
