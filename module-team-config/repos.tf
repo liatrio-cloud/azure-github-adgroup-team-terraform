@@ -1,10 +1,13 @@
-data "github_repositories" "team_repos" {
-  query = "org:${var.org} ${var.team_name}-"
-}
+# Uncomment the below to pull in repos based on name.
+# We're using a GitHub app to manage protections, so this conflicts
+
+#data "github_repositories" "team_repos" {
+#  query = "org:${var.org} ${var.team_name}-"
+#}
 
 locals {
   team_repo_list = concat(
-    data.github_repositories.team_repos.names,
+    #    data.github_repositories.team_repos.names,
     var.team_repos
   )
 }
