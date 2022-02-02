@@ -17,11 +17,14 @@ resource "github_team_repository" "team_repo_link" {
   permission = var.permission
 }
 
-module "branch_protections" {
-  source = "../module-repo-config"
-  providers = {
-    github = github
-  }
+# Uncomment the below to apply branch protections to the team's repositories
+# We're using a GitHub app to manage protections, so this conflicts
 
-  repos = local.team_repo_list
-}
+#module "branch_protections" {
+#  source = "../module-repo-config"
+#  providers = {
+#    github = github
+#  }
+#
+#  repos = local.team_repo_list
+#}
