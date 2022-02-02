@@ -11,7 +11,7 @@ module "platform" {
   team_description = "The platform team"
   team_repos = [
     "azure-github-adgroup-team-terraform",
-    "aks-runners",
+    "github-runner-infrastructure",
     "github-workflows",
     "runner-images"
   ]
