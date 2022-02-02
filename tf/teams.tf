@@ -17,3 +17,16 @@ module "platform" {
   ]
 }
 
+module "kingfisher" {
+  source = "../module-team-config"
+  providers = {
+    github  = github
+    azuread = azuread
+  }
+  org        = var.org
+  permission = var.default_access
+  # Values above this line should be the same for each team
+  team_name        = "kingfisher"
+  team_description = "Demo team"
+}
+
