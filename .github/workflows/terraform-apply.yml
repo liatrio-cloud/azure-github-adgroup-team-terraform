@@ -27,7 +27,7 @@ jobs:
         env:
           TF_BACKEND: ${{ secrets.TF_BACKEND }}
 
-      - name: Terragrunt apply
+      - name: Terraform apply
         run: |
           set -o pipefail
           terraform init -backend-config=backend.tfvars
